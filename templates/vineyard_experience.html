@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vineyard Experience</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #b3e0ff, #f0f0f0);
+            font-family: 'Your_Artistic_Font', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100vh;
+        }
+
+        header {
+            padding: 2em 0;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 1em;
+            color: #333;
+        }
+
+        #image-slider {
+            max-width: 100%;
+            overflow: hidden;
+            margin-bottom: 1em;
+        }
+
+        .image-container {
+            display: flex;
+            transition: transform 1s ease-in-out;
+            margin-left: -10%; 
+        }
+
+        .image {
+            width: 80%; 
+            flex: 0 0 auto;
+            margin-right: 10%;
+        }
+
+        /* Customize the appearance of the rest of your content as needed */
+        section {
+            margin-top: 2em;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 1em 0;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="is-preload">
+
+    <header id="header" class="alt">
+        <div class="inner">
+            <h1>Vineyard Experience</h1>
+        </div>
+    </header>
+
+    <section id="main" class="wrapper">
+        <div class="inner">
+        </div>
+    </section>
+
+    <!-- Image Slider -->
+    <div id="image-slider">
+        <div class="image-container" id="image-container">
+            <img class="image" src="/static/images/farm1.jpg" alt="Farm 1">
+            <img class="image" src="/static/images/farm2.jpg" alt="Farm 2">
+            <img class="image" src="/static/images/farm3.jpg" alt="Farm 3">
+            <!-- Add more images as needed -->
+            <img class="image" src="/static/images/farm1.jpg" alt="Farm 1">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" class="wrapper style1-alt">
+        <div class="inner">
+            <ul class="menu">
+                <li>&copy; NEUQ. All rights reserved.</li>
+                <li>University:<a href="https://www.neuq.edu.cn/">North East University (at Qinhuangdao)</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript to handle automatic image scrolling
+        const imageContainer = document.getElementById('image-container');
+
+        function scrollImages() {
+            const imageWidth = document.querySelector('.image').clientWidth;
+            imageContainer.style.transform = `translateX(${-imageWidth}px)`;
+
+            setTimeout(() => {
+                imageContainer.style.transition = 'none';
+                imageContainer.style.transform = 'translateX(0)';
+                setTimeout(() => {
+                    imageContainer.style.transition = 'transform 1s ease-in-out';
+                    imageContainer.appendChild(imageContainer.firstElementChild);
+                });
+            }, 2000);
+        }
+
+        setInterval(scrollImages, 3000);
+    </script>
+
+</body>
+</html>

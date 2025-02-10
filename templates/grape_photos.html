@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grape Growth Photos</title>
+    <style>
+        body {
+            font-family: 'Your_Artistic_Font', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #8cbf64, #4a7eb6);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+
+        .photos {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 2em;
+        }
+
+        .photo {
+            margin: 1em;
+            position: relative;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .period-label {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        .back-buttons {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+        }
+
+        .back-button {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="back-buttons">
+        <a href="/grape_search" class="back-button">&larr; Back to Search</a>
+        <a href="/" class="back-button">&larr; Back to Index</a>
+    </div>
+
+    <h1>Grape Growth Photos for UID {{ uid }}</h1>
+
+    <div class="photos">
+        {% for period, photo in photos.items() %}
+            <div class="photo">
+                <img src="{{ photo }}" alt="Grape Growth Photo">
+                <div class="period-label">Period: {{ period }}</div>
+            </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
